@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Coloring Books — WZooAI</title>
+  <meta name="description" content="Free printable coloring books from WZooAI YouTube channel. Download beautiful coloring pages for kids and adults." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:    #c9556a;
+      --gold:    #d4a84b;
+      --cream:   #fdf6ec;
+      --ink:     #1c1410;
+      --blush:   #f5dde5;
+      --sage:    #8aab8c;
+      --shadow:  rgba(28,20,16,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+      position: relative;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 30%, #ffe8f0 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, #fff3d6 0%, transparent 60%),
+        var(--cream);
+      overflow: hidden;
+    }
+
+    /* decorative petals */
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      opacity: .18;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 520px; height: 520px;
+      background: var(--rose);
+      top: -180px; left: -160px;
+    }
+    .hero::after {
+      width: 380px; height: 380px;
+      background: var(--gold);
+      bottom: -120px; right: -100px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--rose);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 99px;
+      border: 1px solid #e8b8c4;
+      margin-bottom: 28px;
+      animation: fadeUp .6s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.1;
+      color: var(--ink);
+      max-width: 720px;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #6b5347;
+      max-width: 480px;
+      line-height: 1.7;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp .7s .35s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 99px;
+      font-family: 'Lato', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: transform .18s, box-shadow .18s;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--rose);
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(201,85,106,.35);
+    }
+    .btn-primary:hover { box-shadow: 0 10px 36px rgba(201,85,106,.45); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--rose);
+      border: 2px solid var(--rose);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: #b39a8d;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      animation: fadeUp .7s .5s ease both;
+    }
+    .scroll-hint svg { animation: bounce 1.8s ease infinite; }
+
+    /* ── BOOKS GRID ── */
+    .books-section {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--ink);
+      margin-bottom: 60px;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 36px;
+    }
+
+    /* ── BOOK CARD ── */
+    .book-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform .22s, box-shadow .22s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 44px var(--shadow);
+    }
+
+    .card-cover {
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Beauty and the Beast themed cover */
+    .cover-batb {
+      background: linear-gradient(145deg, #1a0a2e 0%, #2d1060 40%, #7b2d8b 70%, #c9556a 100%);
+    }
+
+    .cover-illustration {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rose-svg {
+      width: 130px;
+      height: 130px;
+      filter: drop-shadow(0 8px 24px rgba(201,85,106,.5));
+      animation: floatRose 4s ease-in-out infinite;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 99px;
+    }
+
+    .card-body {
+      padding: 24px 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .card-meta {
+      font-size: .82rem;
+      color: #8a7060;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .card-btn {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--rose);
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 99px;
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background .18s, transform .18s;
+    }
+    .card-btn:hover { background: #b84460; transform: translateX(3px); }
+
+    /* ── YOUTUBE SECTION ── */
+    .yt-section {
+      background: linear-gradient(135deg, #1a0a2e 0%, #2d1060 100%);
+      color: #fff;
+      padding: 90px 24px;
+      text-align: center;
+    }
+    .yt-section .section-label { color: var(--gold); }
+    .yt-section .section-title { color: #fff; margin-bottom: 20px; }
+    .yt-section p {
+      color: rgba(255,255,255,.72);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .btn-yt {
+      background: #ff0000;
+      color: #fff;
+      box-shadow: 0 6px 28px rgba(255,0,0,.4);
+    }
+    .btn-yt:hover { box-shadow: 0 10px 36px rgba(255,0,0,.5); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 24px;
+      text-align: center;
+      font-size: .82rem;
+      color: #9a8478;
+      border-top: 1px solid #ecddd5;
+    }
+    footer a { color: var(--rose); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+    @keyframes floatRose {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50%       { transform: translateY(-10px) rotate(3deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <span class="hero-badge">✨ 100% Free • No Sign-up Needed</span>
+    <h1>Free Printable<br /><em>Coloring Books</em></h1>
+    <p class="hero-sub">Beautiful coloring pages for kids &amp; adults — lovingly crafted and shared free from our YouTube channel.</p>
+    <div class="hero-cta">
+      <a href="#books" class="btn btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Browse Free Books
+      </a>
+      <a href="https://www.youtube.com/@wzooai" target="_blank" rel="noopener" class="btn btn-secondary">Watch on YouTube</a>
+    </div>
+    <div class="scroll-hint">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      scroll
+    </div>
+  </section>
+
+  <!-- BOOKS GRID -->
+  <section class="books-section" id="books">
+    <p class="section-label">Free Downloads</p>
+    <h2 class="section-title">Coloring Books</h2>
+
+    <div class="books-grid">
+
+      <!-- ══ ADD MORE BOOKS BELOW THIS COMMENT ══
+           Duplicate the <a class="book-card"> block and update:
+             1. href  → link to the book's own page (e.g. books/your-new-book/index.html)
+             2. .cover-*  CSS class + illustration inside .card-cover
+             3. .card-title, .card-meta text
+             4. The download link inside the book's own page
+      -->
+
+      <a class="book-card" href="books/beauty-and-the-beast/index.html">
+        <div class="card-cover cover-batb">
+          <div class="cover-illustration">
+            <!-- Enchanted rose SVG illustration -->
+            <svg class="rose-svg" viewBox="0 0 130 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- glass dome -->
+              <ellipse cx="65" cy="112" rx="28" ry="6" fill="rgba(255,255,255,.15)"/>
+              <path d="M37 112 Q37 80 65 78 Q93 80 93 112 Z" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.3)" stroke-width="1"/>
+              <!-- stem -->
+              <line x1="65" y1="78" x2="65" y2="108" stroke="#8aab8c" stroke-width="3" stroke-linecap="round"/>
+              <!-- leaves -->
+              <path d="M65 95 Q52 88 50 78" stroke="#8aab8c" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M65 90 Q78 83 80 73" stroke="#8aab8c" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- rose petals outer -->
+              <ellipse cx="65" cy="58" rx="14" ry="10" fill="#c9556a" opacity=".9" transform="rotate(-30 65 58)"/>
+              <ellipse cx="65" cy="58" rx="14" ry="10" fill="#c9556a" opacity=".9" transform="rotate(30 65 58)"/>
+              <ellipse cx="65" cy="58" rx="14" ry="10" fill="#c9556a" opacity=".9" transform="rotate(90 65 58)"/>
+              <!-- rose petals mid -->
+              <ellipse cx="65" cy="58" rx="11" ry="8" fill="#d4556a" transform="rotate(0 65 58)"/>
+              <ellipse cx="65" cy="58" rx="11" ry="8" fill="#d4556a" transform="rotate(60 65 58)"/>
+              <ellipse cx="65" cy="58" rx="11" ry="8" fill="#d4556a" transform="rotate(120 65 58)"/>
+              <!-- rose centre -->
+              <circle cx="65" cy="58" r="7" fill="#e8879a"/>
+              <circle cx="65" cy="58" r="4" fill="#f0a8b8"/>
+              <!-- sparkles -->
+              <circle cx="48" cy="40" r="2" fill="#d4a84b" opacity=".8"/>
+              <circle cx="84" cy="36" r="1.5" fill="#d4a84b" opacity=".7"/>
+              <circle cx="90" cy="58" r="1.5" fill="#fff" opacity=".6"/>
+              <circle cx="42" cy="65" r="1" fill="#fff" opacity=".5"/>
+            </svg>
+          </div>
+          <span class="card-tag">New</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Beauty and the Beast Coloring Book</h3>
+          <p class="card-meta">Enchanting scenes from the beloved fairy tale — perfect for all ages. Printable PDF, instant download.</p>
+          <span class="card-btn">
+            Free Download
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- ══ END OF BOOKS — add new cards above this line ══ -->
+
+    </div>
+  </section>
+
+  <!-- YOUTUBE CTA -->
+  <section class="yt-section">
+    <p class="section-label">Stay Updated</p>
+    <h2 class="section-title">More Books Coming Soon</h2>
+    <p>We release new free coloring books regularly on our YouTube channel. Subscribe so you never miss a new download!</p>
+    <a href="https://www.youtube.com/@wzooai" target="_blank" rel="noopener" class="btn btn-yt">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+      Subscribe on YouTube
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with ❤️ by <a href="https://www.youtube.com/@wzooai" target="_blank" rel="noopener">WZooAI</a> · All coloring books are free to download and print for personal use.</p>
+  </footer>
+
+</body>
+</html>
