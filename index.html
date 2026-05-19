@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Coloring Books — WZooAI</title>
-  <meta name="description" content="Free printable coloring books from WZooAI YouTube channel. Download beautiful coloring pages for kids and adults." />
+  <title>Free Coloring Books — Once Upon a Clay</title>
+  <meta name="description" content="Free printable coloring books from Once Upon a Clay — classic stories retold in handcrafted clay and bouncy rhyming verse. Download beautiful coloring pages for kids and adults." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -308,6 +308,39 @@
     }
     .btn-yt:hover { box-shadow: 0 10px 36px rgba(255,0,0,.5); }
 
+    .yt-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto 24px;
+      max-width: 620px;
+    }
+    .yt-features span {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.88);
+      padding: 7px 16px;
+      border-radius: 99px;
+      font-size: .82rem;
+    }
+    .yt-sub-note {
+      font-size: .9rem !important;
+      margin-bottom: 32px !important;
+    }
+    .yt-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-freebies {
+      background: var(--gold);
+      color: var(--ink);
+      box-shadow: 0 6px 28px rgba(212,168,75,.4);
+    }
+    .btn-freebies:hover { box-shadow: 0 10px 36px rgba(212,168,75,.5); }
+
     /* ── FOOTER ── */
     footer {
       padding: 40px 24px;
@@ -338,14 +371,17 @@
   <!-- HERO -->
   <section class="hero">
     <span class="hero-badge">✨ 100% Free • No Sign-up Needed</span>
-    <h1>Free Printable<br /><em>Coloring Books</em></h1>
-    <p class="hero-sub">Beautiful coloring pages for kids &amp; adults — lovingly crafted and shared free from our YouTube channel.</p>
+    <h1><em>Once Upon a Clay</em><br />Free Coloring Books</h1>
+    <p class="hero-sub">Classic stories retold in handcrafted clay and bouncy rhyming verse — brought to life one clay character at a time. Download your free coloring pages below!</p>
     <div class="hero-cta">
       <a href="#books" class="btn btn-primary">
         <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        Browse Free Books
+        Free Downloads
       </a>
-      <a href="https://www.youtube.com/@wzooai" target="_blank" rel="noopener" class="btn btn-secondary">Watch on YouTube</a>
+      <a href="https://www.youtube.com/@onceuponclay" target="_blank" rel="noopener" class="btn btn-secondary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        Watch on YouTube
+      </a>
     </div>
     <div class="scroll-hint">
       <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -418,18 +454,31 @@
 
   <!-- YOUTUBE CTA -->
   <section class="yt-section">
-    <p class="section-label">Stay Updated</p>
+    <p class="section-label">Once Upon a Clay</p>
     <h2 class="section-title">More Books Coming Soon</h2>
-    <p>We release new free coloring books regularly on our YouTube channel. Subscribe so you never miss a new download!</p>
-    <a href="https://www.youtube.com/@wzooai" target="_blank" rel="noopener" class="btn btn-yt">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
-      Subscribe on YouTube
-    </a>
+    <p>Welcome to Once Upon a Clay — the home of classic stories retold in handcrafted clay and bouncy rhyming verse. From enchanted castles to volcanic mountains, every tale is shaped by hand, spoken in rhyme, and brought to life one clay character at a time.</p>
+    <div class="yt-features">
+      <span>🐸 Fairy tale retellings in clay</span>
+      <span>📖 Every word told in bouncy rhyme</span>
+      <span>🎭 Original characters alongside classic tales</span>
+      <span>🌋 New worlds, new adventures</span>
+    </div>
+    <p class="yt-sub-note">Perfect for little ones who love stories, and parents who love a tale well told. New stories dropping regularly!</p>
+    <div class="yt-buttons">
+      <a href="https://www.youtube.com/@onceuponclay?sub_confirmation=1" target="_blank" rel="noopener" class="btn btn-yt">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+        Subscribe for New Stories
+      </a>
+      <a href="#books" class="btn btn-freebies">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        Get Free Downloads
+      </a>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>Made with ❤️ by <a href="https://www.youtube.com/@wzooai" target="_blank" rel="noopener">WZooAI</a> · All coloring books are free to download and print for personal use.</p>
+    <p>Made with ❤️ by <a href="https://www.youtube.com/@onceuponclay" target="_blank" rel="noopener">Once Upon a Clay</a> · All coloring books are free to download and print for personal use.</p>
   </footer>
 
 </body>
